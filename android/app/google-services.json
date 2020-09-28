@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "293700503326",
+    "firebase_url": "https://brightbrain-logicoip.firebaseio.com",
+    "project_id": "brightbrain-logicoip",
+    "storage_bucket": "brightbrain-logicoip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293700503326:android:3a40bcaf7709d7623eab0f",
+        "android_client_info": {
+          "package_name": "com.logicoip.Project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293700503326-4rqp2ihjg8i6vc54q0okmo8em1lqjk6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8dpaGcmYZbFEqD8DyqCZveuYngFdRmkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293700503326-4rqp2ihjg8i6vc54q0okmo8em1lqjk6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
