@@ -1,3 +1,4 @@
+import 'package:Project/screens/myService.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -11,6 +12,8 @@ class _AuthenState extends State<Authen> {
   double amount = 150.0;
   double size = 250.0;
   String emailString, passwordString;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -21,6 +24,40 @@ class _AuthenState extends State<Authen> {
       result = true;
     }
     return result;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      resizeToAvoidBottomPadding: false,
+      body: Container(
+        alignment: Alignment(0, -1),
+        padding: EdgeInsets.only(top: 80.0),
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: <Widget>[
+              showLogo(),
+              showName(),
+              emailTextFormFeild(),
+              passwordText(),
+              Container(
+                margin: EdgeInsets.only(top: 15.0),
+                alignment: Alignment.center,
+                width: size,
+                child: Row(
+                  children: <Widget>[
+                    signInButton(context),
+                    signUpButton(context),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget showLogo() {
@@ -125,6 +162,27 @@ class _AuthenState extends State<Authen> {
     );
   }
 
+  void checkAuthen(BuildContext context) async {
+    await firebaseAuth
+        .signInWithEmailAndPassword(
+      email: emailString,
+      password: passwordString,
+    )
+        .then((objValue) {
+      moveToMyService(context);
+    }).catchError((objValue) {
+      String error = objValue.message;
+      print('error => $error');
+    });
+  }
+
+  void moveToMyService(BuildContext context) {
+    var myServiceRoute =
+        MaterialPageRoute(builder: (BuildContext context) => MyService());
+    Navigator.of(context)
+        .pushAndRemoveUntil(myServiceRoute, (Route<dynamic> route) => false);
+  }
+
   Widget signInButton(BuildContext context) {
     return Expanded(
       child: FlatButton(
@@ -142,9 +200,10 @@ class _AuthenState extends State<Authen> {
           ),
         ),
         onPressed: () {
-          print('You click login');
-          formKey.currentState.save();
-          print('Email =$emailString.password =$passwordString');
+          if (formKey.currentState.validate()) {
+            formKey.currentState.save();
+            checkAuthen(context);
+          }
         },
       ),
     );
@@ -167,40 +226,6 @@ class _AuthenState extends State<Authen> {
           ),
         ),
         onPressed: () {},
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      resizeToAvoidBottomPadding: false,
-      body: Container(
-        alignment: Alignment(0, -1),
-        padding: EdgeInsets.only(top: 80.0),
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: <Widget>[
-              showLogo(),
-              showName(),
-              emailTextFormFeild(),
-              passwordText(),
-              Container(
-                margin: EdgeInsets.only(top: 15.0),
-                alignment: Alignment.center,
-                width: size,
-                child: Row(
-                  children: <Widget>[
-                    signInButton(context),
-                    signUpButton(context),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
       ),
     );
   }
