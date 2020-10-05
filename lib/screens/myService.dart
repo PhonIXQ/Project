@@ -6,8 +6,35 @@ class MyService extends StatefulWidget {
 }
 
 class _MyServiceState extends State<MyService> {
+  Widget button() {
+    return RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        child: Text('Fan'),
+        onPressed: () {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Text('My Service');
+    return Scaffold(
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+                center: Alignment(0, -1),
+                colors: [
+                  Colors.blue,
+                  Colors.blue[300],
+                ],
+                radius: 1.5),
+          ),
+          child: ListView(
+            children: [
+              button(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
