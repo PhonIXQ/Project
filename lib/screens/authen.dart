@@ -79,7 +79,7 @@ class _AuthenState extends State<Authen> {
           fontSize: 40.0,
           color: Colors.orange[800],
           fontWeight: FontWeight.bold,
-          fontFamily: 'Baloo-Tammudu',
+          fontFamily: 'Baloo',
         ),
       ),
     );
@@ -92,7 +92,7 @@ class _AuthenState extends State<Authen> {
         style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Baloo-Tammudu',
+          fontFamily: 'Baloo',
         ),
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
@@ -131,7 +131,7 @@ class _AuthenState extends State<Authen> {
         style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Baloo-Tammudu',
+          fontFamily: 'Baloo',
         ),
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
@@ -196,7 +196,7 @@ class _AuthenState extends State<Authen> {
             fontSize: 16.0,
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Baloo-Tammudu',
+            fontFamily: 'Baloo',
           ),
         ),
         onPressed: () {
@@ -222,7 +222,7 @@ class _AuthenState extends State<Authen> {
             fontSize: 16.0,
             color: Colors.yellow[800],
             fontWeight: FontWeight.bold,
-            fontFamily: 'Baloo-Tammudu',
+            fontFamily: 'Baloo',
           ),
         ),
         onPressed: () {},
